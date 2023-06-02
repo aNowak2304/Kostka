@@ -1,0 +1,910 @@
+@import './colors';
+@import './components';
+
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6rem;
+    color: $dark-green;
+    background-color: $main-color;
+}
+
+
+.nav{
+    position: relative;
+
+    &-bar{
+        position: fixed;
+        padding: 1em 0;
+        width: 100%;
+        z-index: 100;
+        background-color: #fff;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    &-content{
+        position: fixed;
+        display: none;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 5em;
+        height: 100vh;
+        width: 100%;
+        z-index: 1;
+        background-color: $light-green;
+
+    }
+
+    &-active{
+        display: flex;
+    }
+
+    &__item{
+        position: relative;
+        color: $dark-green;
+        font-size: 2.2rem;
+        margin-top: 1em;
+        padding: 0.5em;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    &__item::before, &__item::after{
+        content: '';
+        position: absolute;
+        width: 0;
+        bottom: 0;
+        border-bottom: 2px solid $dark-green;
+    }
+
+    &__item::before{
+        right: 50%;
+    }
+
+    &__item::after{
+        left: 50%;
+    }
+
+    &__item:hover::before, &__item:hover::after{
+        transition: width 0.3s;
+        width: 50%;
+    }
+
+    &__item:last-of-type::after, &__item:last-of-type::before{
+        display: none;
+    }
+
+    &__logo{
+        color: $logo-color;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-left: 0.5em;
+    }
+
+    &__btn{
+        position: relative;
+        cursor: pointer;
+        border-radius: 30px;
+        padding: 0.5em 2em;
+        border: none;
+        color: $main-color;
+        font-size: 2rem;
+        background-color: $btn-color;
+        z-index: 1;
+        transition: width .3s;
+        overflow: hidden;
+    }
+
+       &__btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        background-color: $dark-green;
+        z-index: -1;
+        transition: width .3s;
+       }
+       
+       &__btn:hover::before {
+        width: 100%;
+       }
+    
+    &-desktop{
+        display: none;
+    }
+
+}
+
+.header{
+    position: relative;
+    background-image: url('/dist/img/headerImg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    z-index: 0;
+
+    &__shadow{
+        background-color: rgba(2, 25, 24, 0.8);
+        z-index: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__info{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        color: white;
+        z-index: 1;
+    }
+
+    &__heading{
+        text-transform: uppercase;
+        font-size: 4rem;
+        margin-bottom: 0.3em;
+    }
+
+    &__link{
+        bottom: 5%;
+        position: absolute;
+        animation: arrowBounce 2s none ease-in-out infinite;
+    }
+    &__arrow{
+        font-size: 50px;
+        bottom: 5%;
+        color: $main-color;
+    }
+
+    @keyframes arrowBounce{
+        25%{
+            bottom: 2%;
+        }
+        50%{
+            bottom: 5%;
+        }
+        75%{
+            bottom: 2%;
+        }
+        100%{
+            bottom: 5%;
+        }
+    }
+    &__text{
+        font-size: 2.2rem;
+    }
+}
+
+.aboutus{  
+    &__text{
+        &-box{
+            margin-bottom: 2em;
+        }
+    }
+
+    .section-heading{
+        text-align: left;
+    }
+
+    .section-heading::after{
+        left: 0;
+        transform: translateX(0);
+    }
+
+    &__img{
+        &-box{
+            width: 100%;
+        }
+    }
+}
+
+.numbers{
+    text-align: center;
+    background-color: $light-green;
+
+    &__box{
+        margin-bottom: 3em;
+    }
+
+    &__box:last-of-type{
+        margin-bottom: 0;
+    }
+
+    &__info{
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 0.1em;
+    }
+
+    &__text{
+        padding-bottom: 1em;
+        font-size: 2rem;
+    }
+}
+
+.service{
+    .wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__box{
+        position: relative;
+        margin: 1em 0;
+        background-color: red;
+        width: 100%;
+        height: 350px;
+
+        &-img{
+            transform: translate(-2%, 3%);
+            right: 2%;
+            top: 2%;
+            background-color: #fff;
+            height: 65%;
+            width: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.2)
+        }
+
+        &--first{
+            background-color: $dark-green;
+        }
+
+        &--second{
+            background-color: $card-green;
+        }
+
+        &--third{
+            background-color: $lastCard-green;
+        }
+
+        &-content{
+            color: $main-color;
+            text-align: center;
+        }
+
+        &-title{
+            padding: 0.5em;
+            font-size: 2.2rem;
+        }
+
+        &-text{
+            padding:0 0.3em;
+        }
+    }
+}
+
+.contact{
+    color: $main-color;
+    background-color: $dark-green;
+
+    .section-heading::after{
+        background-color: $underline-color;
+    }
+    
+    .section-heading{
+        margin: 0.3em;
+    }
+
+    &__name{
+        color: $light-green;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .wrapper{
+        margin-top: 1em;
+        text-align: center;
+    }
+
+    &__card{
+        padding: 1.5em;
+    }
+
+    &__box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.3em;
+
+        &-icon{
+            margin: 0 1em 1em 0;
+        }
+
+        &-text{
+            color: $contact-yellow;
+        }
+    }
+}
+
+.projects{
+    .wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__box{
+        margin-bottom: 2em;
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+    }
+}
+
+.opinions{
+
+    .wrapper{
+        display: flex;
+        justify-content: center;
+    }
+       
+
+    .slider{
+        position: relative;
+    }
+
+    .slide{
+        position: relative;
+        width: 250px;
+        animation: slide .4s linear;
+    }
+
+    .slide > *{
+        animation: slideContent  linear 0.5s;
+    }
+
+    @keyframes slideContent{
+        0%{
+            opacity: 0;
+            transform: rotateY(180deg);
+        }
+
+    }
+
+    .fa-chevron-left, .fa-chevron-right{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 50%;
+        color: $dark-green;
+    }
+    .fa-chevron-left{
+        left: -20px;
+    }
+
+    .fa-chevron-right{
+        right: -20px;
+    }
+
+    .user{
+        display: none;
+
+        &__info{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &-img{
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+                width: 130px;
+                height: 130px;
+                border-radius: 50%;
+            }
+
+            &-name{
+                margin: 0.5em 0;
+                font-size: 2rem;
+                font-weight: bold;
+            }
+
+            &-text{
+                text-align: center;
+            }
+        
+        }
+
+        &__box{
+            font-size: 1.2rem;
+            margin-top: 1em;
+            align-self: end;
+            display: flex;
+            justify-content: center;
+            width: 40%;
+            padding: 0.4em 0.2em;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+            &-icon{
+                margin-right: 0.4em;
+                color: #fcc040;
+            }
+        
+            &-icon:last-of-type{
+                margin-right: 0;
+            }
+
+        }
+    }
+    .active{
+        display: block;
+    }
+}
+
+.footer{
+    padding: 2em;
+    text-align: center;
+    color: $main-color;
+    background-color: $dark-green;
+
+    &__logo{
+        font-size: 2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+
+@media(min-width: 450px){
+    .service{
+        
+        &__box{
+            width: 80%;
+        }
+    }
+}
+@media(min-width: 576px){
+    .nav{
+        &-content{
+            padding-top: 10em;
+        }
+    
+        &-active{
+            display: flex;
+        }
+
+        &__item{
+            font-size: 3rem;
+        }
+    }
+
+    .service{
+        &__box{
+            width: 60%;
+        }
+    }
+
+    .projects{
+        &__box{
+            width: 300px;
+            height: 300px;
+        }
+    }
+}
+
+@media(min-width: 768px){
+    .nav{
+        &__btn{
+            font-size: 2.5rem;
+        }
+    }
+    .header{
+        &__heading{
+            font-size: 4.5rem;
+            margin-bottom: 0.5em;
+        }
+    
+        &__text{
+            font-size: 2.5rem;
+        }
+    }
+
+    .aboutus{
+        &__content{
+            display: flex;
+            align-items: center;
+        }
+        &__text{
+            width: 120%;
+            padding-right: 2em;
+        }
+    }
+    .numbers{
+        .wrapper{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        &__box{
+            width: 50%;
+            margin:0 5em;
+            margin-bottom: 2em;
+
+            &--middle{
+                padding: 2em 0;
+                border-top: 2px solid #Fff;
+                border-bottom: 2px solid #Fff;
+            }
+        }
+    
+        &__info{
+            font-size: 4rem;
+            margin-bottom: 0.2em;
+        }
+    
+        &__text{
+            padding-bottom: 1em;
+            font-size: 2.2rem;
+        }
+    }
+
+    .service{
+        .wrapper{
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        &__box{
+
+            &-img{
+                height: 60%;
+            }
+            margin: 0 1.5em 3em 1.5em;
+            width: 40%;
+        }
+    }
+
+    .contact{
+        .wrapper{
+            justify-content: space-around;
+            display: flex;
+        }
+
+        &__name{
+            font-size: 2.2rem;
+        }
+
+        &__card{
+            font-size: 1.8rem;
+        }
+    }
+
+    .projects{
+        &__box{
+           margin-bottom: 3em;
+        }
+    }
+
+    .opinions{
+    
+        .slide{
+            width: 450px;
+        }
+
+        .fa-chevron-left, .fa-chevron-right{
+            font-size: 30px;
+        }
+        .fa-chevron-left{
+            left: -25px;
+        }
+    
+        .fa-chevron-right{
+            right: -25px;
+        }
+    
+        .user{
+            &__info{
+                &-img{
+                    width: 200px;
+                    height: 200px;
+                }
+    
+                &-name{
+                    margin: 0.5em 0;
+                    font-size: 2.5rem;
+                }
+    
+                &-text{
+                    font-size: 1.8rem;
+                }
+            }
+    
+            &__box{
+                font-size: 1.6rem;
+                width: 35%;
+                padding: 0.6em 0.4em;
+                border-radius: 15px;
+    
+                &-icon{
+                    margin-right: 0.5em;
+                }
+            }
+        }
+    }
+
+    .footer{
+        font-size: 1.8rem;
+    }
+}
+
+@media(min-width: 992px){
+    .nav{
+        padding: 0.5em;
+        background-color: #fff;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        &__item{
+            margin: 0 1em;
+            font-size: 1.8rem;
+        }
+
+        &__btn{
+            font-size: 2rem;
+        }
+
+        &__logo{
+            text-decoration: none;
+            font-size: 3rem;
+        }
+
+        &-mobile{
+            display: none;
+        }
+
+        &-desktop{
+            width: 100%;
+            z-index: 100;
+            position: fixed;
+            display: block;
+        }
+
+        &__right{
+            display: flex;
+            align-items: center;
+            justify-content: right;
+            margin-right: 2em;
+        }
+
+        &__left{
+            display: flex;
+            align-items: center;
+           top: 25%;
+            margin-left: 2em;
+            position: absolute;
+        }
+
+        &__item{
+            font-size: 2rem;
+        }
+    }
+
+    .header{
+        &__heading{
+            font-size: 5rem;
+        }
+    
+        &__text{
+            font-size: 2.8rem;
+        }
+    }
+
+    .aboutus{
+        &__content{
+            align-items: start;
+        }
+        &__text{
+            width: 100%;
+            font-size: 2rem;
+        }
+    }
+    
+    .numbers{
+        .wrapper{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        &__box{
+            width: 50%;
+            margin: 0;
+            &--middle{
+                padding: 0 2em;
+                border: none;
+                border-right: 2px solid #Fff;
+                border-left: 2px solid #Fff;
+            }
+        }
+    
+        &__info{
+            font-size: 4.2rem;
+            margin-bottom: 0.2em;
+        }
+    
+    }
+
+    .service{
+        &__box{
+            &-img{
+                transform: translate(-4%, 6%);
+            }
+            &-title{
+                font-size: 2.5rem;
+                margin-top: 0.5em;
+            }
+
+            &-text{
+                font-size: 1.8rem;
+            }
+
+            height: 400px;
+            margin: 0 2em 4em 2em;
+            width: 35%;
+        }
+    }
+
+    .contact{
+
+        &__name{
+            font-size: 2.4rem;
+        }
+
+        &__card{
+            font-size: 2rem;
+        }
+    }
+
+    .projects{
+        .wrapper{
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        &__box{
+           margin-bottom: 0;
+        }
+    }
+
+    .footer{
+        font-size: 2rem;
+    }
+}
+
+@media(min-width: 1200px){
+    .nav{
+        &__item{
+            font-size: 2rem;
+        }
+
+        &__left{
+            margin-left: 5em;
+        }
+
+        &__right{
+            margin-right: 5em;
+        }
+    }
+
+    .header{
+        &__heading{
+            font-size: 6rem;
+        }
+    
+        &__text{
+            font-size: 3.3rem;
+        }
+    }
+
+    .aboutus{
+        &__content{
+            align-items: center;
+        }
+        &__text{
+            width: 70%;
+            font-size: 2.1rem;
+        }
+    }
+
+    .numbers{
+        &__box{
+            width: 35%;
+        }
+    }
+
+    .service{
+        .wrapper{
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+        &__box{
+            &-text{
+                padding: 0 1em;
+            }
+            margin: 1.5em;
+            width: 30%;
+        }
+    }
+
+    .contact{
+
+        &__name{
+            font-size: 2.6rem;
+        }
+
+        &__card{
+            font-size: 2.2rem;
+        }
+    }
+
+    .projects{
+        .wrapper{
+            justify-content: center;
+        }
+        &__box{
+           margin: 0 2em;
+        }
+    }
+
+    .opinions{
+    
+        .slide{
+            width: 600px;
+        }
+
+        .fa-chevron-left, .fa-chevron-right{
+            font-size: 40px;
+        }
+        .fa-chevron-left{
+            left: -30px;
+        }
+    
+        .fa-chevron-right{
+            right: -30px;
+        }
+    
+        .user{
+            &__info{
+                &-img{
+                    width: 250px;
+                    height: 250px;
+                }
+    
+                &-name{
+                    font-size: 2.8rem;
+                }
+    
+                &-text{
+                    font-size: 2rem;
+                }
+            }
+    
+            &__box{
+                font-size: 1.8rem;
+                width: 30%;
+                padding: 0.7em 0.5em;
+                border-radius: 15px;
+    
+                &-icon{
+                    margin-right: 0.6em;
+                }
+            }
+        }
+    }
+}

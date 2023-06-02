@@ -1,0 +1,205 @@
+/*!
+ * Hamburgers
+ * @description Tasty CSS-animated hamburgers
+ * @author Jonathan Suh @jonsuh
+ * @site https://jonsuh.com/hamburgers
+ * @link https://github.com/jonsuh/hamburgers
+ */
+ .hamburger {
+    display: inline-block;
+    cursor: pointer;
+    transition-property: opacity, filter;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+    font: inherit;
+    color: inherit;
+    text-transform: none;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    overflow: visible;
+}
+
+.hamburger:hover {
+    opacity: 0.7;
+}
+
+.hamburger.is-active:hover {
+    opacity: 0.7;
+}
+
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::before,
+.hamburger.is-active .hamburger-inner::after {
+    background-color: #000;
+}
+
+.hamburger-box {
+    width: 40px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -2px;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+    width: 40px;
+    height: 4px;
+    background-color: #000;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+    content: "";
+    display: block;
+}
+
+.hamburger-inner::before {
+    top: -10px;
+}
+
+.hamburger-inner::after {
+    bottom: -10px;
+}
+
+.hamburger--spin .hamburger-inner {
+    transition-duration: 0.22s;
+    transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.hamburger--spin .hamburger-inner::before {
+    transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
+}
+
+.hamburger--spin .hamburger-inner::after {
+    transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.hamburger--spin.is-active .hamburger-inner {
+    transform: rotate(225deg);
+    transition-delay: 0.12s;
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.hamburger--spin.is-active .hamburger-inner::before {
+    top: 0;
+    opacity: 0;
+    transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
+}
+
+.hamburger--spin.is-active .hamburger-inner::after {
+    bottom: 0;
+    transform: rotate(-90deg);
+    transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.hamburger {
+    position: absolute;
+    top: 2em;
+    right: 1.5em;
+    transform: translateY(-50%);
+    z-index: 500;
+
+    &-inner,
+    &-inner::before,
+    &-inner::after {
+        z-index: 500;
+    }
+}
+
+.section-padding{
+    padding: 3em 1em;
+}
+
+.section-heading{
+    position: relative;
+    padding-bottom: 0.5em;
+    font-size: 3.5rem;
+    margin-bottom: 1.5em;
+    text-align: center;
+}
+
+.section-heading::after{
+    content: '';
+    background-color: $light-green;
+    position: absolute;
+    width: 150px;
+    height: 8px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.wrapper{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+@media(min-width: 576px){
+    .hamburger{
+        padding: 1em;
+        top: 2.5em;
+    }
+
+    .section-heading{
+        font-size: 3.8rem;
+    }
+    
+    .section-heading::after{
+        width: 170px;
+    }
+}
+
+@media(min-width: 768px){
+    .section-heading::after{
+        width: 180px;
+    }
+
+    .section-heading{
+        font-size: 4rem;
+    }
+
+    .section-padding{
+        padding: 3.5em 1.5em;
+    }
+}
+
+@media(min-width: 992px){
+    .section-heading::after{
+        width: 200px;
+    }
+
+    .section-heading{
+        font-size: 4.2rem;
+    }
+
+    .section-padding{
+        padding: 4em 2em;
+    }
+}
+
+@media(min-width: 1200px){
+    .section-heading::after{
+        width: 200px;
+    }
+
+    .section-padding{
+        padding: 6em 0;
+    }
+    .section-heading{
+        font-size: 4.5rem;
+    }
+}
